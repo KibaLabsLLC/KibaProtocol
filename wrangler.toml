@@ -44,4 +44,4 @@ BASE_TOKEN_NAME = "Kiba Ocean"
 BASE_TOKEN_SYMBOL = "KOCEAN"
 CHAIN_ID_HEX = "0x0" # unused now that /buy no longer prompts a wallet network switch — harmless to leave
 SFUEL_GAS_DROP = "0.001" # sFUEL sent to each ephemeral buyer wallet before it calls buyDT
-WORKER_URL = "https://ocean-report-cron.YOU.workers.dev"
+WORKER_URL = "https://ocean-report-cron.blooper-it.workers.dev"
