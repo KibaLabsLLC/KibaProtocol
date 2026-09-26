@@ -8,11 +8,11 @@ crons = ["0 6 * * 1"]
 
 [[r2_buckets]]
 binding = "REPORTS_BUCKET"
-bucket_name = "CHANGE-ME-your-bucket-name"
+bucket_name = "kibaos"
 
 [[kv_namespaces]]
 binding = "STATE"
-id = "CHANGE-ME-create-with-wrangler-kv-namespace-create"
+id = "kibaos"
 
 # --- Secrets: wrangler secret put <NAME> ---
 # PRIVATE_KEY               - treasury wallet: deploys everything, owns the
