@@ -1,0 +1,47 @@
+name = "ocean-report-cron"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[triggers]
+crons = ["0 6 * * 1"]
+
+[[r2_buckets]]
+binding = "REPORTS_BUCKET"
+bucket_name = "CHANGE-ME-your-bucket-name"
+
+[[kv_namespaces]]
+binding = "STATE"
+id = "CHANGE-ME-create-with-wrangler-kv-namespace-create"
+
+# --- Secrets: wrangler secret put <NAME> ---
+# PRIVATE_KEY               - treasury wallet: deploys everything, owns the
+#                             exchange, pays gas for price bumps AND now
+#                             funds every ephemeral buyer wallet (gas + KOCEAN)
+# RPC_URL                   - SKALE chain RPC endpoint. Free public option:
+#                             https://testnet.skalenodes.com/v1/giant-half-dual-testnet
+#                             (Calypso Hub Testnet, chain ID 974399131 / 0x3a14269b)
+#                             Grab test sFUEL first: https://testnet.portal.skale.space/chains/calypso
+# MANUAL_TRIGGER_SECRET     - shared secret for /deploy and /run-now
+# STRIPE_SECRET_KEY         - Stripe secret key (sk_...), used to create Checkout Sessions
+# STRIPE_WEBHOOK_SECRET     - signing secret (whsec_...) from the Stripe webhook
+#                             endpoint you point at ${WORKER_URL}/webhook/stripe,
+#                             listening for checkout.session.completed
+#
+# EXCHANGE_ID and the exchange address are no longer secrets — /deploy
+# parses them from the real deploy transaction's logs and writes them
+# into KV state itself, so there's nothing to copy-paste and nothing
+# that can drift out of sync with what's actually on-chain.
+
+[vars]
+BASE_PRICE_OCEAN = "5"
+PRICE_INCREMENT_OCEAN = "3"
+REPORTS_PER_INCREMENT = "6"
+RUN_INTERVAL_DAYS = "14"
+ASSET_NAME = "KibaOS Hardware Telemetry"
+ASSET_SYMBOL = "KIBAHW"
+BASE_TOKEN_NAME = "Kiba Ocean"
+BASE_TOKEN_SYMBOL = "KOCEAN"
+CHAIN_ID_HEX = "0x0" # unused now that /buy no longer prompts a wallet network switch — harmless to leave
+SFUEL_GAS_DROP = "0.001" # sFUEL sent to each ephemeral buyer wallet before it calls buyDT
+WORKER_URL = "https://ocean-report-cron.YOU.workers.dev"
