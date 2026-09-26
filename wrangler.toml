@@ -1,4 +1,4 @@
-name = "ocean-report-cron"
+name = "kibaprotocol"
 main = "src/index.js"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
