@@ -12,7 +12,7 @@ bucket_name = "kibaos"
 
 [[kv_namespaces]]
 binding = "STATE"
-id = "kibaos"
+id = "46a16ffedd234b53a1835dac175c2f95"
 
 # --- Secrets: wrangler secret put <NAME> ---
 # PRIVATE_KEY               - treasury wallet: deploys everything, owns the
